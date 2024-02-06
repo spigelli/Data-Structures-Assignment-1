@@ -1,13 +1,7 @@
 #include <string>
 using namespace std;
 
-// A void function called hello_world that prints "Hello, world!" to the console
-void hello_world();
+void read_file_to_array(std::string file_name, int arr[]);
 
-vector<string> split(string str, char delimiter);
+void print_array(int arr[], int arr_length);
 
-void print_vector(vector<string> vec);
-
-vector<vector<int>> read_file(string file_name);
-
-void print_matrix(vector<vector<int>> matrix);

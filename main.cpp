@@ -4,9 +4,8 @@ using namespace std;
 
 int main() {
     // Call the function that was declared in functions.h
-    hello_world();
-    vector<vector<int>> matrix = read_file("A1input.txt");
-    cout << "Matrix:" << endl;
-    print_matrix(matrix);
+    int arr[100];
+    read_file_to_array("A1input.txt", arr);
+    print_array(arr, 100);
     return 0;
 }
