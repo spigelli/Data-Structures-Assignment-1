@@ -63,7 +63,7 @@ void read_file_to_array(std::string file_name, int arr[]) {
 void print_raw(int arr[]) {
   size_t arr_length = 100;
   cout << "[";
-  for (int i = 0; i < arr_length; i++) {
+  for (size_t i = 0; i < arr_length; i++) {
     cout << arr[i];
     if (i < arr_length - 1) {
       cout << ", ";
@@ -125,7 +125,7 @@ void push_back(int arr[], int new_value) {
     throw ZeroValueException();
   }
   size_t arr_length = 100;
-  for (int i=0; i < arr_length; i++) {
+  for (size_t i=0; i < arr_length; i++) {
     if (arr[i] == 0) {
       arr[i] = new_value;
       return;

@@ -41,7 +41,6 @@ void mainLoop(int arr[]) {
         my_modify_at_pos(arr, modify_index, modify_value);
         break;
       case 3:
-        int new_value;
         cout << "Enter the new value: ";
         cin >> push_back_value;
         push_back(arr, push_back_value);
