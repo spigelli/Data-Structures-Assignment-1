@@ -111,7 +111,9 @@ int find(int arr[], int number) {
  * the array and return the new value and old value back to the user.
  */
 void my_modify_at_pos(int arr[], int index, int new_value) {
-  // TODO: don't allow integers that are 0
+  if (new_value == 0) {
+    throw ZeroValueException();
+  }
   arr[index] = new_value;
 }
 
