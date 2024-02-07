@@ -35,14 +35,25 @@ void mainLoop(int arr[]) {
         break;
       case 2:
         cout << "Enter the index of the number you want to modify: ";
-        cin >> modify_index;
+        try {
+          cin >> modify_index;
+        } catch (exception e) {
+          cout << "Something was wrong with your input, try again." << endl;
+          break;
+        }
         cout << "Enter the new value: ";
         cin >> modify_value;
-        my_modify_at_pos(arr, modify_index, modify_value);
+        int old = my_modify_at_pos(arr, modify_index, modify_value);
+        cout << "Switched out " << old << " at index" << modify_index << " with a new value of" << modify_value << endl;
         break;
       case 3:
         cout << "Enter the new value: ";
-        cin >> push_back_value;
+        try {
+          cin >> push_back_value;
+        } catch (exception e) {
+          cout << "Something was wrong with your input, try again." << endl;
+          break;
+        }
         push_back(arr, push_back_value);
         break;
       case 4:
