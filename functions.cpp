@@ -52,8 +52,6 @@ void read_file_to_array(std::string file_name, int arr[]) {
  * Includes 0s
  */
 void print_raw(int arr[]) {
-  // TODO: Print only non zero elements
-  // TODO: Add a print raw command to print the raw array
   size_t arr_length = 100;
   cout << "[";
   for (int i = 0; i < arr_length; i++) {
@@ -69,7 +67,7 @@ void print(int arr[]) {
   size_t arr_length = 100;
   size_t non_zero_count = 0;
   cout << "[";
-  for (int i = 0; i < arr_length; i++) {
+  for (size_t i = 0; i < arr_length; i++) {
     if (arr[i] != 0) {
       cout << arr[i];
       non_zero_count++;
@@ -89,7 +87,7 @@ int find(int arr[], int number) {
   // TODO: Handle the case where the number is not in the array
   // TODO: don't count 0s
   size_t arr_length = 100;
-  for (int i = 0; i < arr_length; i++) {
+  for (size_t i = 0; i < arr_length; i++) {
     if (arr[i] == number) {
       return i;
     }
@@ -109,11 +107,18 @@ void my_modify_at_pos(int arr[], int index, int new_value) {
  * Adds a new value to the end of the array
  */
 void push_back(int arr[], int new_value) {
-  // TODO: Handle the case where the array is full
-  // TODO: Fill 0s in the array first
-  // TODO: Disallow 0s
+  if (new_value == 0) {
+    throw ZeroValueException();
+  }
   size_t arr_length = 100;
-  arr[arr_length] = new_value;
+  for (int i=0; i < arr_length; i++) {
+    if (arr[i] == 0) {
+      arr[i] = new_value;
+      return;
+    }
+  }
+  // If we got here, the array is full because we didn't return
+  throw FullArrayException();
 }
 
 /**
@@ -121,5 +126,8 @@ void push_back(int arr[], int new_value) {
  * the integer altogether.
  */
 void remove_or_make_zero(int arr[], int index) {
-  arr[index] = 0;
+  for (int i = index; i < 99; i++) {
+    arr[i] = arr[i + 1];
+  }
+  arr[99] = 0;
 }
