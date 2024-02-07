@@ -5,6 +5,7 @@ using namespace std;
 void mainLoop(int arr[]) {
   int choice;
   do {
+    // Reset the choice
     cout << "1. Find" << endl;
     cout << "2. Modify" << endl;
     cout << "3. Push Back" << endl;
@@ -13,6 +14,7 @@ void mainLoop(int arr[]) {
     cout << "6. Print Raw" << endl;
     cout << "7. Exit" << endl;
     cout << "Enter your choice: ";
+    cin.clear();
     cin >> choice;
     cout << endl;
     switch (choice) {
@@ -22,6 +24,7 @@ void mainLoop(int arr[]) {
       int modify_value;
       int push_back_value;
       int remove_index;
+      int old_modify;
 
       case 1:
         cout << "Enter the number you want to find: ";
@@ -37,14 +40,20 @@ void mainLoop(int arr[]) {
         cout << "Enter the index of the number you want to modify: ";
         try {
           cin >> modify_index;
+          if (cin.fail()) {
+            throw exception();
+          }
+          cout << "Enter the new value: ";
+          cin >> modify_value;
+          if (cin.fail()) {
+            throw exception();
+          }
         } catch (exception e) {
           cout << "Something was wrong with your input, try again." << endl;
           break;
         }
-        cout << "Enter the new value: ";
-        cin >> modify_value;
-        int old = my_modify_at_pos(arr, modify_index, modify_value);
-        cout << "Switched out " << old << " at index" << modify_index << " with a new value of" << modify_value << endl;
+        old_modify = my_modify_at_pos(arr, modify_index, modify_value);
+        cout << "Switched out " << old_modify << " at index" << modify_index << " with a new value of" << modify_value << endl;
         break;
       case 3:
         cout << "Enter the new value: ";
