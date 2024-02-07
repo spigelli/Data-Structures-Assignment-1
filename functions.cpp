@@ -4,6 +4,24 @@
 
 using namespace std;
 
+/**
+ * An exception to throw when inserting to a full array
+ */
+class FullArrayException : public exception {
+  virtual const char* what() const throw() {
+    return "The array is full";
+  }
+};
+
+/**
+ * An exception to throw when user tries to set a value to 0
+ */
+class ZeroValueException : public exception {
+  virtual const char* what() const throw() {
+    return "The value cannot be 0, 0 is reserved for empty elements in the array";
+  }
+};
+
 void read_file_to_array(std::string file_name, int arr[]) {
   // Open an input file stream
   ifstream file(file_name);
@@ -29,10 +47,11 @@ void read_file_to_array(std::string file_name, int arr[]) {
 }
 
 /**
- * Prints an array of ints in the form:
+ * Prints the array of ints in the form:
  * [1, 2, 3, 4, 5]
+ * Includes 0s
  */
-void print_array(int arr[]) {
+void print_raw(int arr[]) {
   // TODO: Print only non zero elements
   // TODO: Add a print raw command to print the raw array
   size_t arr_length = 100;
@@ -44,6 +63,22 @@ void print_array(int arr[]) {
     }
   }
   cout << "]" << endl;
+}
+
+void print(int arr[]) {
+  size_t arr_length = 100;
+  size_t non_zero_count = 0;
+  cout << "[";
+  for (int i = 0; i < arr_length; i++) {
+    if (arr[i] != 0) {
+      cout << arr[i];
+      non_zero_count++;
+      if (i < arr_length - 1) {
+        cout << ", ";
+      }
+    }
+  }
+  cout << "] (" << non_zero_count << "/100) items" << endl;
 }
 
 /**

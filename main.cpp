@@ -10,9 +10,11 @@ void mainLoop(int arr[]) {
     cout << "3. Push Back" << endl;
     cout << "4. Remove" << endl;
     cout << "5. Print" << endl;
-    cout << "6. Exit" << endl;
+    cout << "6. Print Raw" << endl;
+    cout << "7. Exit" << endl;
     cout << "Enter your choice: ";
     cin >> choice;
+    cout << endl;
     switch (choice) {
       int find_number;
       int find_result;
@@ -50,15 +52,20 @@ void mainLoop(int arr[]) {
         remove_or_make_zero(arr, remove_index);
         break;
       case 5:
-        print_array(arr);
+        print(arr);
         break;
       case 6:
+        print_raw(arr);
+        break;
+      case 7:
         cout << "Goodbye!" << endl;
         break;
+      
       default:
         cout << "Invalid choice" << endl;
     }
-  } while (choice != 6);
+    cout << endl;
+  } while (choice != 7);
 }
 
 int main() {
@@ -67,7 +74,8 @@ int main() {
     cout << "Reading file to array..." << endl;
     read_file_to_array("A1input.txt", arr);
     cout << "Read array: " << endl;
-    print_array(arr);
+    print(arr);
+    cout << endl;
     mainLoop(arr);
     return 0;
 }

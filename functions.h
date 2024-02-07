@@ -3,7 +3,9 @@ using namespace std;
 
 void read_file_to_array(std::string file_name, int arr[]);
 
-void print_array(int arr[]);
+void print_raw(int arr[]);
+
+void print(int arr[]);
 
 /**
  * Checks if a certain integer exists in the array if the number is present return the
