@@ -110,11 +110,13 @@ int find(int arr[], int number) {
  * Modifies the value of an integer when called with the index of the integer in
  * the array and return the new value and old value back to the user.
  */
-void my_modify_at_pos(int arr[], int index, int new_value) {
+int my_modify_at_pos(int arr[], int index, int new_value) {
   if (new_value == 0) {
     throw ZeroValueException();
   }
+  int old = arr[index];
   arr[index] = new_value;
+  return old;
 }
 
 /**

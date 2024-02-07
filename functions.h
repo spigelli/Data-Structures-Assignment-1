@@ -17,7 +17,7 @@ int find(int arr[], int number);
  * Modifies the value of an integer when called with the index of the integer in
  * the array and return the new value and old value back to the user.
  */
-void my_modify_at_pos(int arr[], int index, int new_value);
+int my_modify_at_pos(int arr[], int index, int new_value);
 
 /**
  * Adds a new value to the end of the array
