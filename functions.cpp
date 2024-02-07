@@ -22,6 +22,15 @@ class ZeroValueException : public exception {
   }
 };
 
+/**
+ * An exception to throw when a value is not found in the array
+ */
+class ValueNotFoundException : public exception {
+  virtual const char* what() const throw() {
+    return "The value was not found in the array";
+  }
+};
+
 void read_file_to_array(std::string file_name, int arr[]) {
   // Open an input file stream
   ifstream file(file_name);
@@ -84,14 +93,17 @@ void print(int arr[]) {
  * index where the number is present.
  */
 int find(int arr[], int number) {
-  // TODO: Handle the case where the number is not in the array
-  // TODO: don't count 0s
+  if (number == 0) {
+    throw ZeroValueException();
+  }
   size_t arr_length = 100;
   for (size_t i = 0; i < arr_length; i++) {
     if (arr[i] == number) {
       return i;
     }
   }
+  // If we got here, the number is not in the array
+  throw ValueNotFoundException();
 }
 
 /**
@@ -126,8 +138,10 @@ void push_back(int arr[], int new_value) {
  * the integer altogether.
  */
 void remove_or_make_zero(int arr[], int index) {
-  for (int i = index; i < 99; i++) {
+  // Shift all elements to the left
+  for (size_t i = index; i < 99; i++) {
     arr[i] = arr[i + 1];
   }
+  // Set the last element to 0
   arr[99] = 0;
 }
