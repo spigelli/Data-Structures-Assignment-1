@@ -33,6 +33,8 @@ void read_file_to_array(std::string file_name, int arr[]) {
  * [1, 2, 3, 4, 5]
  */
 void print_array(int arr[]) {
+  // TODO: Print only non zero elements
+  // TODO: Add a print raw command to print the raw array
   size_t arr_length = 100;
   cout << "[";
   for (int i = 0; i < arr_length; i++) {
@@ -49,6 +51,8 @@ void print_array(int arr[]) {
  * index where the number is present.
  */
 int find(int arr[], int number) {
+  // TODO: Handle the case where the number is not in the array
+  // TODO: don't count 0s
   size_t arr_length = 100;
   for (int i = 0; i < arr_length; i++) {
     if (arr[i] == number) {
@@ -62,6 +66,7 @@ int find(int arr[], int number) {
  * the array and return the new value and old value back to the user.
  */
 void my_modify_at_pos(int arr[], int index, int new_value) {
+  // TODO: don't allow integers that are 0
   arr[index] = new_value;
 }
 
@@ -69,6 +74,9 @@ void my_modify_at_pos(int arr[], int index, int new_value) {
  * Adds a new value to the end of the array
  */
 void push_back(int arr[], int new_value) {
+  // TODO: Handle the case where the array is full
+  // TODO: Fill 0s in the array first
+  // TODO: Disallow 0s
   size_t arr_length = 100;
   arr[arr_length] = new_value;
 }
